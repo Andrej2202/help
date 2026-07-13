@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/user/Desktop/kate_help/build",
+  "command": "D:/gcc/bin/g++.exe  @CMakeFiles/matrix_test.dir/includes_CXX.rsp -g -std=c++20 -Wall -Wextra -Wpedantic -o CMakeFiles/matrix_test.dir/main.cpp.obj -c C:/Users/user/Desktop/kate_help/main.cpp",
+  "file": "C:/Users/user/Desktop/kate_help/main.cpp",
+  "output": "CMakeFiles/matrix_test.dir/main.cpp.obj"
+}
+]

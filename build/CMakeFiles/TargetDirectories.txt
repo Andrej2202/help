@@ -1,0 +1,3 @@
+C:/Users/user/Desktop/kate_help/build/CMakeFiles/matrix_test.dir
+C:/Users/user/Desktop/kate_help/build/CMakeFiles/edit_cache.dir
+C:/Users/user/Desktop/kate_help/build/CMakeFiles/rebuild_cache.dir
