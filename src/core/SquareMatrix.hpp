@@ -15,6 +15,7 @@ concept MatrixContainer = requires(Seq s, std::size_t idx, T val) {
 };
 
 template <template<typename> class Container, typename T>
+requires MatrixContainer<Container<T>, T>
 class SquareMatrix {
 private:
     Container<T>* data_;

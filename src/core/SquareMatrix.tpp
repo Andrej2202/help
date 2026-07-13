@@ -1,4 +1,7 @@
+#pragma once
+
 template <template<typename> class Container, typename T>
+    requires MatrixContainer<Container<T>, T>
 SquareMatrix<Container, T>::SquareMatrix(Container<T>* elements, size_t dimension) 
     : dimension_(dimension) {
     if (!elements) {
@@ -11,6 +14,7 @@ SquareMatrix<Container, T>::SquareMatrix(Container<T>* elements, size_t dimensio
 }
 
 template <template<typename> class Container, typename T>
+    requires MatrixContainer<Container<T>, T>
 SquareMatrix<Container, T>::SquareMatrix(size_t dimension) 
     : dimension_(dimension) {
     size_t total_size = dimension * dimension;
@@ -21,12 +25,14 @@ SquareMatrix<Container, T>::SquareMatrix(size_t dimension)
 }
 
 template <template<typename> class Container, typename T>
+    requires MatrixContainer<Container<T>, T>
 SquareMatrix<Container, T>::SquareMatrix(const SquareMatrix& other) 
     : dimension_(other.dimension_) {
     data_ = cloneData(other.data_);
 }
 
 template <template<typename> class Container, typename T>
+    requires MatrixContainer<Container<T>, T>
 SquareMatrix<Container, T>& SquareMatrix<Container, T>::operator=(const SquareMatrix& other) {
     if (this != &other) {
         delete data_;
@@ -37,11 +43,13 @@ SquareMatrix<Container, T>& SquareMatrix<Container, T>::operator=(const SquareMa
 }
 
 template <template<typename> class Container, typename T>
+    requires MatrixContainer<Container<T>, T>
 SquareMatrix<Container, T>::~SquareMatrix() {
     delete data_;
 }
 
 template <template<typename> class Container, typename T>
+    requires MatrixContainer<Container<T>, T>
 T SquareMatrix<Container, T>::Get(size_t row, size_t col) const {
     if (row >= dimension_ || col >= dimension_) {
         throw std::out_of_range("Matrix index out of bounds");
@@ -50,6 +58,7 @@ T SquareMatrix<Container, T>::Get(size_t row, size_t col) const {
 }
 
 template <template<typename> class Container, typename T>
+    requires MatrixContainer<Container<T>, T>
 void SquareMatrix<Container, T>::Set(size_t row, size_t col, const T& value) {
     if (row >= dimension_ || col >= dimension_) {
         throw std::out_of_range("Matrix index out of bounds");
@@ -58,16 +67,19 @@ void SquareMatrix<Container, T>::Set(size_t row, size_t col, const T& value) {
 }
 
 template <template<typename> class Container, typename T>
+    requires MatrixContainer<Container<T>, T>
 size_t SquareMatrix<Container, T>::GetDimension() const {
     return dimension_;
 }
 
 template <template<typename> class Container, typename T>
+    requires MatrixContainer<Container<T>, T>
 const Container<T>& SquareMatrix<Container, T>::GetData() const {
     return *data_;
 }
 
 template <template<typename> class Container, typename T>
+    requires MatrixContainer<Container<T>, T>
 SquareMatrix<Container, T> SquareMatrix<Container, T>::operator+(const SquareMatrix& other) const {
     if (dimension_ != other.dimension_) {
         throw std::invalid_argument("Matrix dimensions must match for addition");
@@ -82,6 +94,7 @@ SquareMatrix<Container, T> SquareMatrix<Container, T>::operator+(const SquareMat
 }
 
 template <template<typename> class Container, typename T>
+    requires MatrixContainer<Container<T>, T>
 SquareMatrix<Container, T> SquareMatrix<Container, T>::operator-(const SquareMatrix& other) const {
     if (dimension_ != other.dimension_) {
         throw std::invalid_argument("Matrix dimensions must match for subtraction");
@@ -96,6 +109,7 @@ SquareMatrix<Container, T> SquareMatrix<Container, T>::operator-(const SquareMat
 }
 
 template <template<typename> class Container, typename T>
+    requires MatrixContainer<Container<T>, T>
 SquareMatrix<Container, T> SquareMatrix<Container, T>::operator*(const T& scalar) const {
     SquareMatrix result(dimension_);
     size_t total = dimension_ * dimension_;
@@ -106,6 +120,7 @@ SquareMatrix<Container, T> SquareMatrix<Container, T>::operator*(const T& scalar
 }
 
 template <template<typename> class Container, typename T>
+    requires MatrixContainer<Container<T>, T>
 SquareMatrix<Container, T> SquareMatrix<Container, T>::operator*(const SquareMatrix& other) const {
     if (dimension_ != other.dimension_) {
         throw std::invalid_argument("Matrix dimensions must match for multiplication");
@@ -125,6 +140,7 @@ SquareMatrix<Container, T> SquareMatrix<Container, T>::operator*(const SquareMat
 }
 
 template <template<typename> class Container, typename T>
+    requires MatrixContainer<Container<T>, T>
 SquareMatrix<Container, T> SquareMatrix<Container, T>::Identity(size_t dimension) {
     SquareMatrix result(dimension);
     for (size_t i = 0; i < dimension; ++i) {
